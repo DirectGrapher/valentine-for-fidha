@@ -6,6 +6,10 @@
   <button class="no" id="noBtn">NO 🙄</button>
 </div>
 
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 const questions = [
   "Who is the luckiest wife in the world? 😌",
@@ -20,6 +24,7 @@ const questions = [
   "Do you promise to laugh at Shanu’s jokes like they’re the best ever? 😂🏆"
 ];
 
+// Make sure your Google Drive links are public and in this format
 const photos = [
   "https://drive.google.com/uc?export=view&id=1JFTlOkcyuwXiE-AY5FQNJDcop1xJAK7w",
   "https://drive.google.com/uc?export=view&id=1Pag9mLyE_xqV0wNSzWUjSnMNM2R3RzyC"
@@ -27,6 +32,7 @@ const photos = [
 
 let index = 0;
 let photoIndex = 0;
+let slideInterval;
 const noBtn = document.getElementById("noBtn");
 const music = document.getElementById("music");
 const slide = document.getElementById("slide");
@@ -34,12 +40,18 @@ const slide = document.getElementById("slide");
 function start() {
   music.play();
   document.getElementById("question").innerText = questions[index];
-  slide.style.display = "block"; // show slideshow
+
+  // Show slideshow
+  slide.style.display = "block";
   slide.src = photos[0];
-  setInterval(() => {
-    photoIndex = (photoIndex + 1) % photos.length;
-    slide.src = photos[photoIndex];
-  }, 3000); // change photo every 3 seconds
+
+  // Avoid multiple intervals
+  if(!slideInterval){
+    slideInterval = setInterval(() => {
+      photoIndex = (photoIndex + 1) % photos.length;
+      slide.src = photos[photoIndex];
+    }, 3000); // change photo every 3 seconds
+  }
 }
 
 function moveNo() {
@@ -61,6 +73,7 @@ document.querySelector(".yes").addEventListener("click", () => {
 });
 
 function showGift() {
+  clearInterval(slideInterval); // stop slideshow
   document.getElementById("card").innerHTML = `
     <h1>🎁 Surprise!</h1>
     <p>This Valentine gift is just a small reminder…</p>
