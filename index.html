@@ -87,40 +87,9 @@ const questions = [
   "Do you promise to laugh at Shanu’s jokes like they’re the best ever? 😂🏆"
 ];
 
-function showSlideshow() {
-  document.getElementById("card").innerHTML = `
-    <h1>Our Memories 📸</h1>
-    <p>Every moment with you is my favorite ❤️</p>
-    <img src="https://drive.google.com/uc?export=view&id=1JFTlOkcyuwXiE-AY5FQNJDcop1xJAK7w" alt="Photo 1">
-    <img src="https://drive.google.com/uc?export=view&id=1Pag9mLyE_xqV0wNSzWUjSnMNM2R3RzyC" alt="Photo 2">
-    <img src="https://drive.google.com/uc?export=view&id=1FvtRzxbMkA6ZP2M4XRlf459ATbb2fcvw" alt="Photo 3">
-    <img src="https://drive.google.com/uc?export=view&id=1gGa_z6IFjvrRsabWsIZr8-llx-F9Vxx0" alt="Photo 4">
-    <img src="https://drive.google.com/uc?export=view&id=1ordc7W1hpDk6qPMY2evN0ebl7crUm59r" alt="Photo 5">
-    <img src="https://drive.google.com/uc?export=view&id=1MqMn5B7m-lVQN5IUUNAyW9u7450GZM6y" alt="Photo 6">
-    <img src="https://drive.google.com/uc?export=view&id=1BXUqD_ypURvthRovynyn4ZVKuJeBbPy3" alt="Photo 7">
-    <img src="https://drive.google.com/uc?export=view&id=1RRg0Gs-JY-oSAAnmuAHhyK7z3eW4-MJf" alt="Photo 8">
-    <img src="https://drive.google.com/uc?export=view&id=1npQwl3XUinu5tFFQPtBRdXEzsjNv-Ebv" alt="Photo 9">
-    <img src="https://drive.google.com/uc?export=view&id=1KdR-QNVzJnwmhFQ8sbU8uo2rXQLGbXPn" alt="Photo 10">
-    <img src="https://drive.google.com/uc?export=view&id=1XQeb7KCiSsPEsxRNzYgoy21wjQjJkGCy" alt="Photo 11">
-    <img src="https://drive.google.com/uc?export=view&id=1axL3BOQuHj-7RxlWqvkFBPjD66tDGsE5" alt="Photo 12">
-  `;
-
-  // Modal for clicking any image
-  const imgs = document.querySelectorAll("#card img");
-  imgs.forEach(img => {
-    img.addEventListener("click", () => {
-      modal.style.display = "flex";
-      modalImg.src = img.src;
-    });
-  });
-
-  modal.addEventListener("click", () => {
-    modal.style.display = "none";
-    modalImg.src = '';
-  });
-
-  setTimeout(showGift, 8000);
-}
+const photos = [
+  "https://drive.google.com/file/d/101LA-KOuHmSBGW_LApTMAZNM7Z6d4Sxw/view?usp=sharing"
+];
 
 let index = 0;
 let photoIndex = 0;
