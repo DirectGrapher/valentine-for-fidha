@@ -16,6 +16,7 @@
     align-items: center;
     color: white;
     overflow: hidden;
+    position: relative;
   }
   .card {
     background: rgba(0,0,0,0.3);
@@ -25,6 +26,7 @@
     max-width: 360px;
     text-align: center;
     position: relative;
+    z-index: 1;
   }
   h1 { font-size: 24px; margin-bottom:10px; }
   p { font-size: 17px; margin-bottom: 15px; }
@@ -35,10 +37,41 @@
     font-size: 16px;
     margin: 8px;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
   }
   .yes { background:#4CAF50; color:white; }
-  .no { background:#f44336; color:white; position:absolute; }
+  .no { background:#f44336; color:white; }
   img { width:100%; border-radius:15px; margin-top:10px; }
+  
+  /* Floating hearts */
+  .heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    transform: rotate(45deg);
+    left: 50%;
+    bottom: 0;
+    animation: float 4s linear infinite;
+    z-index: 0;
+  }
+  .heart:before,
+  .heart:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 50%;
+  }
+  .heart:before { top: -10px; left: 0; }
+  .heart:after { left: 10px; top: 0; }
+
+  @keyframes float {
+    0% { transform: translateX(0) translateY(0) rotate(45deg); opacity:1;}
+    100% { transform: translateX(calc(-50px + 100px*var(--i))) translateY(-600px) rotate(45deg); opacity:0;}
+  }
 </style>
 </head>
 
@@ -68,21 +101,13 @@ const questions = [
   "Will you love Shanu more every day… even on his annoying days? 😜🥰"
 ];
 
-
 const photos = [
-  "https://lh3.googleusercontent.com/d/1JFTlOkcyuwXiE-AY5FQNJDcop1xJAK7w",
-  "https://lh3.googleusercontent.com/d/1Pag9mLyE_xqV0wNSzWUjSnMNM2R3RzyC",
-  "https://lh3.googleusercontent.com/d/1FvtRzxbMkA6ZP2M4XRlf459ATbb2fcvw",
-  "https://lh3.googleusercontent.com/d/1ordc7W1hpDk6qPMY2evN0ebl7crUm59r",
-  "https://lh3.googleusercontent.com/d/1MqMn5B7m-lVQN5IUUNAyW9u7450GZM6y",
-  "https://lh3.googleusercontent.com/d/1BXUqD_ypURvthRovynyn4ZVKuJeBbPy3",
-  "https://lh3.googleusercontent.com/d/1RRg0Gs-JY-oSAAnmuAHhyK7z3eW4-MJf",
-  "https://lh3.googleusercontent.com/d/1npQwl3XUinu5tFFQPtBRdXEzsjNv-Ebv",
-  "https://lh3.googleusercontent.com/d/1KdR-QNVzJnwmhFQ8sbU8uo2rXQLGbXPn",
-  "https://lh3.googleusercontent.com/d/1XQeb7KCiSsPEsxRNzYgoy21wjQjJkGCy",
-  "https://lh3.googleusercontent.com/d/1axL3BOQuHj-7RxlWqvkFBPjD66tDGsE5"
+  "https://drive.google.com/uc?export=view&id=1JFTlOkcyuwXiE-AY5FQNJDcop1xJAK7w",
+  "https://drive.google.com/uc?export=view&id=1Pag9mLyE_xqV0wNSzWUjSnMNM2R3RzyC",
+  "https://drive.google.com/uc?export=view&id=1FvtRzxbMkA6ZP2M4XRlf459ATbb2fcvw",
+  "https://drive.google.com/uc?export=view&id=1ordc7W1hpDk6qPMY2evN0ebl7crUm59r",
+  "https://drive.google.com/uc?export=view&id=1MqMn5B7m-lVQN5IUUNAyW9u7450GZM6y"
 ];
-
 
 let index = 0;
 let photoIndex = 0;
@@ -95,9 +120,8 @@ function start() {
 }
 
 function moveNo() {
-  alert("😭 If you say NO, Shanu will cry...\nPlease reconsider 💔");
-  const x = Math.random() * 200 - 100;
-  const y = Math.random() * 200 - 100;
+  const x = Math.random() * 150 - 75;
+  const y = Math.random() * 150 - 75;
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 }
 
@@ -124,7 +148,7 @@ function showSlideshow() {
     document.getElementById("slide").src = photos[photoIndex];
   }, 2500);
 
-  setTimeout(showGift, 8000);
+  setTimeout(showGift, 9000);
 }
 
 function showGift() {
@@ -135,6 +159,15 @@ function showGift() {
     <p>Happy Valentine’s Day, My Pondattiiiii 💘</p>
     <p>Love,<br><b>Shanu</b></p>
   `;
+
+  // Add floating hearts
+  for(let i=0;i<30;i++){
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random()*100 + "%";
+    heart.style.setProperty('--i', Math.random());
+    document.body.appendChild(heart);
+  }
 }
 </script>
 
