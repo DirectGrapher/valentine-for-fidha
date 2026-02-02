@@ -92,7 +92,6 @@ const questions = [
 
 const photos = [
   "https://drive.google.com/uc?export=view&id=1JFTlOkcyuwXiE-AY5FQNJDcop1xJAK7w",
-  "https://drive.google.com/uc?export=view&id=1JFTlOkcyuwXiE-AY5FQNJDcop1xJAK7w"
 ];
 
 
