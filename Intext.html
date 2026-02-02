@@ -6,14 +6,14 @@
 <title>Shanu ❤️ Fidha</title>
 
 <style>
+  * { box-sizing: border-box; margin:0; padding:0; }
   body {
-    margin: 0;
-    height: 100vh;
+    height:100vh;
     background: linear-gradient(135deg, #ff4e78, #ff9aa2);
     font-family: 'Comic Sans MS', cursive;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     color: white;
     overflow: hidden;
   }
@@ -26,9 +26,8 @@
     text-align: center;
     position: relative;
   }
-  h1 { font-size: 24px; }
-  p { font-size: 17px; }
-
+  h1 { font-size: 24px; margin-bottom:10px; }
+  p { font-size: 17px; margin-bottom: 15px; }
   button {
     padding: 12px 18px;
     border-radius: 25px;
@@ -37,18 +36,9 @@
     margin: 8px;
     cursor: pointer;
   }
-  .yes { background: #4CAF50; color: white; }
-  .no {
-    background: #f44336;
-    color: white;
-    position: absolute;
-  }
-
-  img {
-    width: 100%;
-    border-radius: 15px;
-    margin-top: 10px;
-  }
+  .yes { background:#4CAF50; color:white; }
+  .no { background:#f44336; color:white; position:absolute; }
+  img { width:100%; border-radius:15px; margin-top:10px; }
 </style>
 </head>
 
@@ -60,10 +50,7 @@
 
 <div class="card" id="card">
   <h1>Hey Fidha ❤️</h1>
-  <p id="question">
-    This Valentine test is made with love by your husband 😌  
-    <br><br>Ready?
-  </p>
+  <p id="question">Shanu made this Valentine test just for you 😌<br><br>Ready?</p>
   <button class="yes" onclick="start()">YES 😍</button>
   <button class="no" id="noBtn">NO 🙄</button>
 </div>
@@ -78,20 +65,10 @@ const questions = [
 ];
 
 const photos = [
-  "images/photo1.jpg",
-  "images/photo2.jpg",
-  "images/photo3.jpg",
-  "images/photo4.jpg",
-  "images/photo5.jpg",
-  "images/photo6.jpg",
-  "images/photo7.jpg",
-  "images/photo8.jpg",
-  "images/photo9.jpg",
-  "images/photo10.jpg",
-  "images/photo11.jpg",
-  "images/photo12.jpg"
+  "images/photo1.jpg","images/photo2.jpg","images/photo3.jpg","images/photo4.jpg",
+  "images/photo5.jpg","images/photo6.jpg","images/photo7.jpg","images/photo8.jpg",
+  "images/photo9.jpg","images/photo10.jpg","images/photo11.jpg","images/photo12.jpg"
 ];
-
 
 let index = 0;
 let photoIndex = 0;
@@ -115,7 +92,7 @@ noBtn.addEventListener("touchstart", moveNo);
 
 document.querySelector(".yes").addEventListener("click", () => {
   index++;
-  if (index < questions.length) {
+  if(index < questions.length){
     document.getElementById("question").innerText = questions[index];
   } else {
     showSlideshow();
@@ -128,7 +105,6 @@ function showSlideshow() {
     <p>Every moment with you is my favorite ❤️</p>
     <img id="slide" src="${photos[0]}">
   `;
-
   setInterval(() => {
     photoIndex = (photoIndex + 1) % photos.length;
     document.getElementById("slide").src = photos[photoIndex];
@@ -150,3 +126,4 @@ function showGift() {
 
 </body>
 </html>
+
