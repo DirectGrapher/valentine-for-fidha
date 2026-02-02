@@ -1,85 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Valentine 💖</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #ffe6f0;
-      overflow: hidden;
-      font-family: 'Arial', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shanu ❤️ Fidha</title>
 
-    .slideshow {
-      position: relative;
-      width: 90%;
-      max-width: 800px;
-      height: 500px;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    .slideshow img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-    }
-
-    .slideshow img.active {
-      opacity: 1;
-    }
-
-    .caption {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.5);
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 10px;
-      font-size: 1.2em;
-      text-align: center;
-    }
-  </style>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; }
+  body {
+    height:100vh;
+    background: linear-gradient(135deg, #ff4e78, #ff9aa2);
+    font-family: 'Comic Sans MS', cursive;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    overflow: hidden;
+  }
+  .card {
+    background: rgba(0,0,0,0.3);
+    padding: 20px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 360px;
+    text-align: center;
+    position: relative;
+  }
+  h1 { font-size: 24px; margin-bottom:10px; }
+  p { font-size: 17px; margin-bottom: 15px; }
+  button {
+    padding: 12px 18px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    margin: 8px;
+    cursor: pointer;
+  }
+  .yes { background:#4CAF50; color:white; }
+  .no { background:#f44336; color:white; position:absolute; }
+  img { width:100%; border-radius:15px; margin-top:10px; }
+</style>
 </head>
+
 <body>
-  <div class="slideshow">
-    <img src="https://drive.google.com/uc?export=view&id=1JFTlOkcyuwXiE-AY5FQNJDcop1xJAK7w" class="active" alt="Valentine 1">
-    <img src="https://drive.google.com/uc?export=view&id=1Pag9mLyE_xqV0wNSzWUjSnMNM2R3RzyC" alt="Valentine 2">
-    <img src="https://drive.google.com/uc?export=view&id=1FvtRzxbMkA6ZP2M4XRlf459ATbb2fcvw" alt="Valentine 3">
-    <img src="https://drive.google.com/uc?export=view&id=1ordc7W1hpDk6qPMY2evN0ebl7crUm59r" alt="Valentine 4">
-    <img src="https://drive.google.com/uc?export=view&id=1MqMn5B7m-lVQN5IUUNAyW9u7450GZM6y" alt="Valentine 5">
-    <img src="https://drive.google.com/uc?export=view&id=1BXUqD_ypURvthRovynyn4ZVKuJeBbPy3" alt="Valentine 6">
-    <img src="https://drive.google.com/uc?export=view&id=1RRg0Gs-JY-oSAAnmuAHhyK7z3eW4-MJf" alt="Valentine 7">
-    <img src="https://drive.google.com/uc?export=view&id=1npQwl3XUinu5tFFQPtBRdXEzsjNv-Ebv" alt="Valentine 8">
-    <img src="https://drive.google.com/uc?export=view&id=1KdR-QNVzJnwmhFQ8sbU8uo2rXQLGbXPn" alt="Valentine 9">
-    <img src="https://drive.google.com/uc?export=view&id=1XQeb7KCiSsPEsxRNzYgoy21wjQjJkGCy" alt="Valentine 10">
-    <img src="https://drive.google.com/uc?export=view&id=1axL3BOQuHj-7RxlWqvkFBPjD66tDGsE5" alt="Valentine 11">
-    <div class="caption">Happy Valentine 💖</div>
-  </div>
 
-  <script>
-    const slides = document.querySelectorAll('.slideshow img');
-    let current = 0;
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
 
-    function showNextSlide() {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }
+<div class="card" id="card">
+  <h1>Hey Fidha ❤️</h1>
+  <p id="question">Shanu made this Valentine test just for you 😌<br><br>Ready?</p>
+  <button class="yes" onclick="start()">YES 😍</button>
+  <button class="no" id="noBtn">NO 🙄</button>
+</div>
 
-    setInterval(showNextSlide, 3000); // Change slide every 3 seconds
-  </script>
+<script>
+const questions = [
+  "Who is the luckiest wife in the world? 😌",
+  "Do you promise to love Shanu even when he annoys you? 😜",
+  "Will you share your food with Shanu forever? 🍕",
+  "Is Shanu the most handsome husband ever? 😎",
+  "Will you be Shanu’s Valentine forever? 💖"
+];
+
+const photos = [
+  "https://drive.google.com/uc?export=view&id=1JFTlOkcyuwXiE-AY5FQNJDcop1xJAK7w",
+  "https://drive.google.com/uc?export=view&id=1Pag9mLyE_xqV0wNSzWUjSnMNM2R3RzyC",
+  "https://drive.google.com/uc?export=view&id=1FvtRzxbMkA6ZP2M4XRlf459ATbb2fcvw",
+  "https://drive.google.com/uc?export=view&id=1gGa_z6IFjvrRsabWsIZr8-llx-F9Vxx0",
+  "https://drive.google.com/uc?export=view&id=1ordc7W1hpDk6qPMY2evN0ebl7crUm59r",
+  "https://drive.google.com/uc?export=view&id=1MqMn5B7m-lVQN5IUUNAyW9u7450GZM6y",
+  "https://drive.google.com/uc?export=view&id=1BXUqD_ypURvthRovynyn4ZVKuJeBbPy3",
+  "https://drive.google.com/uc?export=view&id=1RRg0Gs-JY-oSAAnmuAHhyK7z3eW4-MJf",
+  "https://drive.google.com/uc?export=view&id=1npQwl3XUinu5tFFQPtBRdXEzsjNv-Ebv",
+  "https://drive.google.com/uc?export=view&id=1KdR-QNVzJnwmhFQ8sbU8uo2rXQLGbXPn",
+  "https://drive.google.com/uc?export=view&id=1XQeb7KCiSsPEsxRNzYgoy21wjQjJkGCy",
+  "https://drive.google.com/uc?export=view&id=1axL3BOQuHj-7RxlWqvkFBPjD66tDGsE5"
+];
+
+
+let index = 0;
+let photoIndex = 0;
+const noBtn = document.getElementById("noBtn");
+const music = document.getElementById("music");
+
+function start() {
+  music.play();
+  document.getElementById("question").innerText = questions[index];
+}
+
+function moveNo() {
+  alert("😭 If you say NO, Shanu will cry...\nPlease reconsider 💔");
+  const x = Math.random() * 200 - 100;
+  const y = Math.random() * 200 - 100;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+noBtn.addEventListener("mouseover", moveNo);
+noBtn.addEventListener("touchstart", moveNo);
+
+document.querySelector(".yes").addEventListener("click", () => {
+  index++;
+  if(index < questions.length){
+    document.getElementById("question").innerText = questions[index];
+  } else {
+    showSlideshow();
+  }
+});
+
+function showSlideshow() {
+  document.getElementById("card").innerHTML = `
+    <h1>Our Memories 📸</h1>
+    <p>Every moment with you is my favorite ❤️</p>
+    <img id="slide" src="${photos[0]}">
+  `;
+  setInterval(() => {
+    photoIndex = (photoIndex + 1) % photos.length;
+    document.getElementById("slide").src = photos[photoIndex];
+  }, 2500);
+
+  setTimeout(showGift, 8000);
+}
+
+function showGift() {
+  document.getElementById("card").innerHTML = `
+    <h1>🎁 Surprise!</h1>
+    <p>This Valentine gift is just a small reminder…</p>
+    <p><b>You are my forever ❤️</b></p>
+    <p>Happy Valentine’s Day, Fidha 💘</p>
+    <p>Love,<br><b>Shanu</b></p>
+  `;
+}
+</script>
+
 </body>
 </html>
