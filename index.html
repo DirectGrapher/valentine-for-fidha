@@ -88,8 +88,6 @@ const questions = [
 ];
 
 const photos = [
-  "https://drive.google.com/uc?export=view&id=1JFTlOkcyuwXiE-AY5FQNJDcop1xJAK7w",
-  "https://drive.google.com/uc?export=view&id=1Pag9mLyE_xqV0wNSzWUjSnMNM2R3RzyC",
   "https://drive.google.com/uc?export=view&id=1FvtRzxbMkA6ZP2M4XRlf459ATbb2fcvw",
   "https://drive.google.com/uc?export=view&id=1gGa_z6IFjvrRsabWsIZr8-llx-F9Vxx0",
   "https://drive.google.com/uc?export=view&id=1ordc7W1hpDk6qPMY2evN0ebl7crUm59r",
@@ -136,7 +134,7 @@ function showSlideshow() {
   document.getElementById("card").innerHTML = `
     <h1>Our Memories 📸</h1>
     <p>Every moment with you is my favorite ❤️</p>
-    <img id="slide" src="${photos[0]}">
+    <img id="slide" src="`+photos[0]+`">
   `;
 
   const slideImg = document.getElementById("slide");
