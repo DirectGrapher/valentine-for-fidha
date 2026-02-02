@@ -10,7 +10,7 @@
   body {
     height:100vh;
     background: linear-gradient(135deg, #ff4e78, #ff9aa2);
-    font-family: 'Comic Sans MS', cursive;
+    font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,35 +43,6 @@
   .yes { background:#4CAF50; color:white; }
   .no { background:#f44336; color:white; }
   img { width:100%; border-radius:15px; margin-top:10px; }
-  
-  /* Floating hearts */
-  .heart {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: red;
-    transform: rotate(45deg);
-    left: 50%;
-    bottom: 0;
-    animation: float 4s linear infinite;
-    z-index: 0;
-  }
-  .heart:before,
-  .heart:after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    background: red;
-    border-radius: 50%;
-  }
-  .heart:before { top: -10px; left: 0; }
-  .heart:after { left: 10px; top: 0; }
-
-  @keyframes float {
-    0% { transform: translateX(0) translateY(0) rotate(45deg); opacity:1;}
-    100% { transform: translateX(calc(-50px + 100px*var(--i))) translateY(-600px) rotate(45deg); opacity:0;}
-  }
 </style>
 </head>
 
@@ -159,15 +130,6 @@ function showGift() {
     <p>Happy Valentine’s Day, My Pondattiiiii 💘</p>
     <p>Love,<br><b>Shanu</b></p>
   `;
-
-  // Add floating hearts
-  for(let i=0;i<30;i++){
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.style.left = Math.random()*100 + "%";
-    heart.style.setProperty('--i', Math.random());
-    document.body.appendChild(heart);
-  }
 }
 </script>
 
