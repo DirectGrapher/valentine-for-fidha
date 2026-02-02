@@ -38,21 +38,6 @@
   }
   .yes { background:#4CAF50; color:white; }
   .no { background:#f44336; color:white; position:absolute; }
-  img { width:100%; border-radius:15px; margin-top:10px; cursor:pointer; }
-  .modal {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
-  }
-  .modal img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 15px;
-  }
 </style>
 </head>
 
@@ -69,10 +54,6 @@
   <button class="no" id="noBtn">NO 🙄</button>
 </div>
 
-<div class="modal" id="modal">
-  <img id="modal-img" src="">
-</div>
-
 <script>
 const questions = [
   "Who is the luckiest wife in the world? 😌",
@@ -87,18 +68,9 @@ const questions = [
   "Do you promise to laugh at Shanu’s jokes like they’re the best ever? 😂🏆"
 ];
 
-const photos = [
-  "https://drive.google.com/uc?export=view&id=101LA-KOuHmSBGW_LApTMAZNM7Z6d4Sxw",
-  "https://drive.google.com/uc?export=view&id=1Pag9mLyE_xqV0wNSzWUjSnMNM2R3RzyC",
-  "https://drive.google.com/uc?export=view&id=1FvtRzxbMkA6ZP2M4XRnJw5sP1yAqQkL"
-];
-
 let index = 0;
-let photoIndex = 0;
 const noBtn = document.getElementById("noBtn");
 const music = document.getElementById("music");
-const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modal-img");
 
 function start() {
   music.play();
@@ -119,36 +91,9 @@ document.querySelector(".yes").addEventListener("click", () => {
   if(index < questions.length){
     document.getElementById("question").innerText = questions[index];
   } else {
-    showSlideshow();
+    showGift();
   }
 });
-
-function showSlideshow() {
-  document.getElementById("card").innerHTML = `
-    <h1>Our Memories 📸</h1>
-    <p>Every moment with you is my favorite ❤️</p>
-    <img id="slide" src="${photos[0]}">
-  `;
-
-  const slideImg = document.getElementById("slide");
-
-  slideImg.addEventListener("click", () => {
-    modal.style.display = "flex";
-    modalImg.src = photos[photoIndex];
-  });
-
-  modal.addEventListener("click", () => {
-    modal.style.display = "none";
-    modalImg.src = '';
-  });
-
-  setInterval(() => {
-    photoIndex = (photoIndex + 1) % photos.length;
-    slideImg.src = photos[photoIndex];
-  }, 2500);
-
-  setTimeout(showGift, 8000);
-}
 
 function showGift() {
   document.getElementById("card").innerHTML = `
