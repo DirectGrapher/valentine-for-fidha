@@ -67,8 +67,10 @@
 
 <body>
 
-<audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+<!-- Audio -->
+<audio id="music" loop autoplay>
+  <source src="mymusic.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
 </audio>
 
 <div class="card" id="card">
@@ -114,7 +116,6 @@ const photos = [
   "./12.jpeg"
 ];
 
-
 let qIndex = 0;
 let photoIndex = 0;
 
@@ -122,6 +123,14 @@ const noBtn = document.getElementById("noBtn");
 const music = document.getElementById("music");
 const modal = document.getElementById("modal");
 const modalImg = document.getElementById("modal-img");
+
+// Try to autoplay music when page loads
+window.addEventListener('load', () => {
+  music.play().catch(() => {
+    // If autoplay blocked, click anywhere to start music
+    document.body.addEventListener('click', () => music.play());
+  });
+});
 
 function start() {
   music.play();
