@@ -37,13 +37,22 @@
     cursor: pointer;
   }
   .yes { background:#4CAF50; color:white; }
-  .no { background:#f44336; color:white; position:absolute; }
-  img { width:100%; border-radius:15px; margin-top:10px; cursor:pointer; }
+  .no {
+    background:#f44336;
+    color:white;
+    position:absolute;
+    right:20px;
+    bottom:20px;
+  }
+  img {
+    width:100%;
+    border-radius:15px;
+    margin-top:10px;
+  }
   .modal {
     display: none;
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.9);
     justify-content: center;
     align-items: center;
@@ -63,8 +72,11 @@
 </audio>
 
 <div class="card" id="card">
-  <h1>Hey❤️Fidha Fathima CT ❤️</h1>
-  <p id="question">Shanu made this Valentine test just for you 😌<br><br>Ready?</p>
+  <h1>Hey ❤️ Fidha Fathima CT ❤️</h1>
+  <p id="question">
+    Shanu made this Valentine test just for you 😌<br><br>
+    Ready?
+  </p>
   <button class="yes" onclick="start()">YES 😍</button>
   <button class="no" id="noBtn">NO 🙄</button>
 </div>
@@ -88,22 +100,24 @@ const questions = [
 ];
 
 const photos = [
-  "./1.jpeg",
-  "./2.jpeg",
-  "./3.jpeg",
-  "./4.jpeg",
-  "./5.jpeg",
-  "./6.jpeg",
-  "./7.jpeg",
-  "./8.jpeg",
-  "./9.jpeg",
-  "./10.jpeg",
-  "./11.jpeg",
-  "./12.jpeg"
+  "./images/1.jpeg",
+  "./images/2.jpeg",
+  "./images/3.jpeg",
+  "./images/4.jpeg",
+  "./images/5.jpeg",
+  "./images/6.jpeg",
+  "./images/7.jpeg",
+  "./images/8.jpeg",
+  "./images/9.jpeg",
+  "./images/10.jpeg",
+  "./images/11.jpeg",
+  "./images/12.jpeg"
 ];
 
-let index = 0;
+
+let qIndex = 0;
 let photoIndex = 0;
+
 const noBtn = document.getElementById("noBtn");
 const music = document.getElementById("music");
 const modal = document.getElementById("modal");
@@ -111,7 +125,7 @@ const modalImg = document.getElementById("modal-img");
 
 function start() {
   music.play();
-  document.getElementById("question").innerText = questions[index];
+  document.getElementById("question").innerText = questions[qIndex];
 }
 
 function moveNo() {
@@ -124,9 +138,9 @@ noBtn.addEventListener("mouseover", moveNo);
 noBtn.addEventListener("touchstart", moveNo);
 
 document.querySelector(".yes").addEventListener("click", () => {
-  index++;
-  if(index < questions.length){
-    document.getElementById("question").innerText = questions[index];
+  qIndex++;
+  if (qIndex < questions.length) {
+    document.getElementById("question").innerText = questions[qIndex];
   } else {
     showSlideshow();
   }
@@ -138,26 +152,25 @@ function showSlideshow() {
     <p>Every moment with you is my favorite ❤️</p>
     <img id="slide" src="${photos[0]}">
   `;
-}
 
   const slideImg = document.getElementById("slide");
 
-  slideImg.addEventListener("click", () => {
+  slideImg.onclick = () => {
     modal.style.display = "flex";
     modalImg.src = photos[photoIndex];
-  });
+  };
 
-  modal.addEventListener("click", () => {
+  modal.onclick = () => {
     modal.style.display = "none";
-    modalImg.src = '';
-  });
+    modalImg.src = "";
+  };
 
   setInterval(() => {
     photoIndex = (photoIndex + 1) % photos.length;
     slideImg.src = photos[photoIndex];
-  }, 2500);
+  }, 1000);
 
-  setTimeout(showGift, 8000);
+  setTimeout(showGift, 12000);
 }
 
 function showGift() {
@@ -166,11 +179,10 @@ function showGift() {
     <p>This Valentine gift is just a small reminder…</p>
     <p><b>You are my forever ❤️</b></p>
     <p>Happy Valentine’s Day, My Pondattiiii 💘</p>
-    <p>Love,<br><b>Shanu</b></p>
+    <p>Love,<br><b>Shanoooooooo</b></p>
   `;
 }
 </script>
 
 </body>
-
 </html>
