@@ -63,7 +63,7 @@
 </audio>
 
 <div class="card" id="card">
-  <h1>Hey ❤️ Fidha Fathima CT ❤️</h1>
+  <h1>Hey❤️Fidha Fathima CT ❤️</h1>
   <p id="question">Shanu made this Valentine test just for you 😌<br><br>Ready?</p>
   <button class="yes" onclick="start()">YES 😍</button>
   <button class="no" id="noBtn">NO 🙄</button>
@@ -89,8 +89,17 @@ const questions = [
 
 const photos = [
   "./1.jpg",
-"./2.jpg",
-"./3.jpg"
+  "./2.jpg",
+  "./3.jpg",
+  "./4.jpg",
+  "./5.jpg",
+  "./6.jpg",
+  "./7.jpg",
+  "./8.jpg",
+  "./9.jpg",
+  "./10.jpg",
+  "./11.jpg",
+  "./12.jpg"
 ];
 
 let index = 0;
@@ -127,7 +136,7 @@ function showSlideshow() {
   document.getElementById("card").innerHTML = `
     <h1>Our Memories 📸</h1>
     <p>Every moment with you is my favorite ❤️</p>
-    <img id="slide" src="`+photos[0]+`">
+    <img id="slide" src="+photos[0]+">
   `;
 
   const slideImg = document.getElementById("slide");
@@ -164,4 +173,3 @@ function showGift() {
 </body>
 
 </html>
-
